@@ -17,4 +17,4 @@ bentoml serve chatbot/service.py
 ```
 
 ### Reference
-- Original Repo: https://github.com/ssheng/BentoChain
+- https://github.com/ssheng/BentoChain
