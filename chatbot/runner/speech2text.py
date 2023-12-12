@@ -18,9 +18,9 @@ class Speech2TextRunner(BasicRunner):
         super().__init__(WHISPER_PROCESSOR, WHISPER_MODEL)
 
     @bentoml.Runnable.method(batchable=False)
-    def transcribe_audio(self, tensor: np.ndarray) -> str:
-        if tensor is not None:
-            predicted_ids = self.model.generate(tensor.to(self.device))
+    def translate(self, audio_data: np.ndarray) -> str:
+        if audio_data is not None:
+            predicted_ids = self.model.generate(audio_data)
             transcriptions = self.processor.batch_decode(
                 predicted_ids, skip_special_tokens=True
             )

@@ -1,3 +1,5 @@
+from typing import Any
+
 import bentoml
 import torch
 from bentoml._internal.models.model import Model
@@ -16,3 +18,6 @@ class BasicRunner(bentoml.Runnable):
         self.processor = bentoml.transformers.load_model(processor)
         self.model = bentoml.transformers.load_model(mode)
         self.model.to(self.device)
+
+    def translate(self) -> Any:
+        return NotImplementedError

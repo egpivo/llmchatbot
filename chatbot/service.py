@@ -44,13 +44,13 @@ svc = bentoml.Service(
 
 @svc.api(input=bentoml.io.NumpyNdarray(), output=bentoml.io.Text())
 def generate_text(speech: np.ndarray) -> str:
-    text = speech2text_runner.transcribe_audio.run(speech)
+    text = speech2text_runner.translate.run(speech)
     return text
 
 
 @svc.api(input=bentoml.io.Text(), output=bentoml.io.NumpyNdarray())
 def generate_speech(text: str) -> np.ndarray:
-    return text2speech_runner.generate_speech.run(text)
+    return text2speech_runner.translate.run(text)
 
 
 chat = Chatter(generate_speech, generate_text, WHISPER_PROCESSOR, LOGGER)
