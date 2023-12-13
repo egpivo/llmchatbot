@@ -15,7 +15,7 @@ def sample_audio_data():
 
 
 def test_load_speaker_embeddings():
-    embeddings = load_speaker_embeddings()
+    embeddings = load_speaker_embeddings().to("cpu")
     assert isinstance(embeddings, torch.Tensor)
     assert len(embeddings.shape) == 2
 

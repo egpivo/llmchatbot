@@ -53,7 +53,7 @@ def generate_speech(text: str) -> np.ndarray:
     return text2speech_translator.translate.run(text)
 
 
-chat = Chatter(generate_speech, generate_text, WHISPER_PROCESSOR, LOGGER)
+chatter = Chatter(generate_speech, generate_text, WHISPER_PROCESSOR, LOGGER)
 app = FastAPI()
-app = gr.mount_gradio_app(app, create_view(chat), path="/chatbot")
+app = gr.mount_gradio_app(app, create_view(chatter), path="/chatbot")
 svc.mount_asgi_app(app, "/")
