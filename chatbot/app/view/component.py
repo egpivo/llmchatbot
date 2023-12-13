@@ -1,8 +1,8 @@
 import gradio as gr
 
 
-def create_head() -> gr.Textbox:
-    return gr.Markdown("<h2><center>Chatbot Playground</center></h2>")
+def create_head() -> gr.Markdown:
+    return gr.Markdown("<h2>Chatbot Playground</h2>")
 
 
 def create_openai_api_key_textbox() -> gr.Textbox:
