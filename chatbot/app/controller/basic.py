@@ -5,7 +5,7 @@ import torch
 from bentoml._internal.models.model import Model
 
 
-class BasicRunner(bentoml.Runnable):
+class BasicTranslator(bentoml.Runnable):
     SUPPORTED_RESOURCES = ("nvidia.com/gpu", "cpu")
     SUPPORTS_CPU_MULTI_THREADING = True
 

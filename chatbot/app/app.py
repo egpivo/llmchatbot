@@ -5,30 +5,30 @@ import gradio as gr
 import numpy as np
 from fastapi import FastAPI
 
-from chatbot.app.model.chatter import Chatter
-from chatbot.app.view.view import create_view
-from chatbot.runner.speech2text import (
+from chatbot.app.controller.speech2text import (
     WHISPER_MODEL,
     WHISPER_PROCESSOR,
-    Speech2TextRunner,
+    Speech2TextTranslator,
 )
-from chatbot.runner.text2speech import (
+from chatbot.app.controller.text2speech import (
     T5_MODEL,
     T5_PROCESSOR,
     T5_VOCODER,
-    Text2SpeechRunner,
+    Text2SpeechTranslator,
 )
+from chatbot.app.model.chatter import Chatter
+from chatbot.app.view.view import create_view
 
 logging.basicConfig(level=logging.INFO)
 LOGGER = logging.getLogger()
 
-speech2text_runner = bentoml.Runner(
-    runnable_class=Speech2TextRunner,
+speech2text_translator = bentoml.Runner(
+    runnable_class=Speech2TextTranslator,
     name="speech2text",
     models=[WHISPER_PROCESSOR, WHISPER_MODEL],
 )
-text2speech_runner = bentoml.Runner(
-    runnable_class=Text2SpeechRunner,
+text2speech_translator = bentoml.Runner(
+    runnable_class=Text2SpeechTranslator,
     name="text2speech",
     models=[T5_PROCESSOR, T5_MODEL, T5_VOCODER],
 )
@@ -36,21 +36,21 @@ text2speech_runner = bentoml.Runner(
 svc = bentoml.Service(
     name="chatbot",
     runners=[
-        text2speech_runner,
-        speech2text_runner,
+        speech2text_translator,
+        text2speech_translator,
     ],
 )
 
 
 @svc.api(input=bentoml.io.NumpyNdarray(), output=bentoml.io.Text())
 def generate_text(speech: np.ndarray) -> str:
-    text = speech2text_runner.translate.run(speech)
+    text = speech2text_translator.translate.run(speech)
     return text
 
 
 @svc.api(input=bentoml.io.Text(), output=bentoml.io.NumpyNdarray())
 def generate_speech(text: str) -> np.ndarray:
-    return text2speech_runner.translate.run(text)
+    return text2speech_translator.translate.run(text)
 
 
 chat = Chatter(generate_speech, generate_text, WHISPER_PROCESSOR, LOGGER)

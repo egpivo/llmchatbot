@@ -13,7 +13,7 @@ pip install git+https://github.com/egpivo/chatbot.git
 
 ### Usage
 ```bash
-bentoml serve chatbot/service.py
+bentoml serve chatbot/app/app.py
 ```
 
 ### Reference

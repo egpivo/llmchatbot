@@ -1,8 +1,8 @@
 import bentoml
 import numpy as np
 
-from chatbot.runner import WHISPER_MODEL_VERSION, WHISPER_PROCESSOR_VERSION
-from chatbot.runner.basic import BasicRunner
+from chatbot.app.controller import WHISPER_MODEL_VERSION, WHISPER_PROCESSOR_VERSION
+from chatbot.app.controller.basic import BasicTranslator
 
 VERSION = "latest"
 WHISPER_PROCESSOR = bentoml.models.get(
@@ -11,7 +11,7 @@ WHISPER_PROCESSOR = bentoml.models.get(
 WHISPER_MODEL = bentoml.models.get(WHISPER_MODEL_VERSION.format(version=VERSION))
 
 
-class Speech2TextRunner(BasicRunner):
+class Speech2TextTranslator(BasicTranslator):
     def __init__(
         self,
     ) -> None:

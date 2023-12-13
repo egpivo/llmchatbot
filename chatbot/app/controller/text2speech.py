@@ -3,8 +3,12 @@ import numpy as np
 import torch
 from datasets import load_dataset
 
-from chatbot.runner import T5_MODEL_VERSION, T5_PROCESSOR_VERSION, T5_VOCODER_VERSION
-from chatbot.runner.basic import BasicRunner
+from chatbot.app.controller import (
+    T5_MODEL_VERSION,
+    T5_PROCESSOR_VERSION,
+    T5_VOCODER_VERSION,
+)
+from chatbot.app.controller.basic import BasicTranslator
 
 VERSION = "latest"
 T5_PROCESSOR = bentoml.models.get(T5_PROCESSOR_VERSION.format(version=VERSION))
@@ -21,7 +25,7 @@ def load_speaker_embeddings() -> torch.Tensor:
     return speaker_tensor.unsqueeze(0)
 
 
-class Text2SpeechRunner(BasicRunner):
+class Text2SpeechTranslator(BasicTranslator):
     def __init__(self) -> None:
         super().__init__(T5_PROCESSOR, T5_MODEL)
         self.vocoder = bentoml.transformers.load_model(T5_VOCODER)
