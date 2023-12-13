@@ -6,7 +6,7 @@ import numpy as np
 from fastapi import FastAPI
 
 from chatbot.app.model.chatter import Chatter
-from chatbot.app.view import create_view
+from chatbot.app.view.view import create_view
 from chatbot.runner.speech2text import (
     WHISPER_MODEL,
     WHISPER_PROCESSOR,

@@ -11,21 +11,21 @@ logging.basicConfig(level=logging.INFO)
 def fetch_args() -> argparse.Namespace:
     arg_parser = ArgumentParser()
     arg_parser.add_argument(
-        "--t5_pretrained_model",
+        name_or_flags="--t5_pretrained_model",
         type=str,
         dest="t5_pretrained_model",
         default="microsoft/speecht5_tts",
         help="Speech-to-text pretrained model",
     )
     arg_parser.add_argument(
-        "--t5_pretrained_vocoderl",
+        name_or_flags="--t5_pretrained_vocoderl",
         type=str,
         dest="t5_pretrained_vocoderl",
         default="microsoft/speecht5_hifigan",
         help="Speech-to-text pretrained Vocoder",
     )
     arg_parser.add_argument(
-        "--whisper_pretrained_model",
+        name_or_flags="--whisper_pretrained_model",
         type=str,
         dest="whisper_pretrained_model",
         default="openai/whisper-tiny",
@@ -34,7 +34,7 @@ def fetch_args() -> argparse.Namespace:
     return arg_parser.parse_args()
 
 
-def run_training_job(args: argparse.Namespace) -> list[float]:
+def run_training_job(args: argparse.Namespace) -> None:
     logger = logging.getLogger()
 
     speech2text_trainer = Speech2TextTrainer(
@@ -56,5 +56,5 @@ def run_training_job(args: argparse.Namespace) -> list[float]:
 
 
 if __name__ == "__main__":
-    args = fetch_args()
-    run_training_job(args)
+    arguments = fetch_args()
+    run_training_job(arguments)
