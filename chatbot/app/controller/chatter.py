@@ -8,7 +8,7 @@ from bentoml._internal.models.model import Model
 from langchain.chains import ConversationChain
 
 from chatbot.app.model import PLAYBACK_SAMPLE_RATE
-from chatbot.app.model.chatter_output import ChatterOutput
+from chatbot.app.model.data import ChatterOutput
 from chatbot.app.model.processor import AudioProcessor, TextProcessor
 
 

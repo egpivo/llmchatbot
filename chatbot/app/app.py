@@ -5,18 +5,18 @@ import gradio as gr
 import numpy as np
 from fastapi import FastAPI
 
-from chatbot.app.controller.speech2text import (
-    WHISPER_MODEL,
-    WHISPER_PROCESSOR,
+from chatbot.app.controller.chatter import Chatter
+from chatbot.app.controller.translator import (
     Speech2TextTranslator,
+    Text2SpeechTranslator,
 )
-from chatbot.app.controller.text2speech import (
+from chatbot.app.model.bentoml_model import (
     T5_MODEL,
     T5_PROCESSOR,
     T5_VOCODER,
-    Text2SpeechTranslator,
+    WHISPER_MODEL,
+    WHISPER_PROCESSOR,
 )
-from chatbot.app.model.chatter import Chatter
 from chatbot.app.view.view import create_view
 
 logging.basicConfig(level=logging.INFO)

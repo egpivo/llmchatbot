@@ -1,6 +1,6 @@
 import gradio as gr
 
-from chatbot.app.model.chatter import Chatter
+from chatbot.app.controller.chatter import Chatter
 from chatbot.app.utils import set_openai_api_key
 from chatbot.app.view.component import (
     create_chatbot,
