@@ -1,5 +1,7 @@
 import torch
-from datasets import load_dataset
+from datasets import Audio, Dataset, load_dataset
+
+from chatbot.app.model import PLAYBACK_SAMPLE_RATE
 
 
 def load_speaker_embeddings() -> torch.Tensor:
@@ -9,3 +11,11 @@ def load_speaker_embeddings() -> torch.Tensor:
     )
     speaker_tensor = torch.tensor(embeddings[7306]["xvector"])
     return speaker_tensor.unsqueeze(0)
+
+
+def load_audio_data(audio_path: str) -> dict:
+    print(audio_path)
+    audio_dataset = Dataset.from_dict({"audio": [audio_path]}).cast_column(
+        "audio", Audio(sampling_rate=PLAYBACK_SAMPLE_RATE)
+    )
+    return audio_dataset[0]["audio"]

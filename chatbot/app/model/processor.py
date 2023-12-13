@@ -1,9 +1,8 @@
 from typing import Callable, Optional
 
-from datasets import Audio, Dataset
 from transformers import Pipeline
 
-from chatbot.app.model import PLAYBACK_SAMPLE_RATE
+from chatbot.app.model.utils import load_audio_data
 
 
 class AudioProcessor:
@@ -15,15 +14,12 @@ class AudioProcessor:
         self.processor = audio_processor
         self.text_generator = text_generator
 
-    def process(self, audio_path) -> Optional[str]:
-        audio_dataset = Dataset.from_dict({"audio": [audio_path]}).cast_column(
-            "audio", Audio(sampling_rate=PLAYBACK_SAMPLE_RATE)
-        )
-        sample = audio_dataset[0]["audio"]
+    def process(self, audio_path: str) -> Optional[str]:
         try:
+            audio_data = load_audio_data(audio_path)
             input_features = self.processor(
-                sample["array"],
-                sampling_rate=sample["sampling_rate"],
+                audio_data["array"],
+                sampling_rate=audio_data["sampling_rate"],
                 return_tensors="pt",
             ).input_features
             return self.text_generator(input_features)
