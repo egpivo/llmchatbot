@@ -8,8 +8,6 @@ from chatbot.app.model.utils import load_audio_data, load_speaker_embeddings
 
 FIXTURE_DIR = Path(__file__).parent.resolve() / "_fixture_files"
 
-PLAYBACK_SAMPLE_RATE = 16000
-
 
 @pytest.fixture
 def sample_audio_data():

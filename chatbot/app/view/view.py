@@ -1,7 +1,6 @@
 import gradio as gr
 
 from chatbot.app.controller.chatter import Chatter
-from chatbot.app.utils import set_openai_api_key
 from chatbot.app.view.component import (
     create_chatbot,
     create_chatbot_audio,
@@ -11,6 +10,7 @@ from chatbot.app.view.component import (
     create_user_audio_message,
     create_user_text_message,
 )
+from chatbot.app.view.utils import set_openai_api_key
 
 
 def create_view(chatter: Chatter) -> gr.Blocks:

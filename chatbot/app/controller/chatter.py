@@ -11,36 +11,13 @@ from chatbot.app.model import PLAYBACK_SAMPLE_RATE
 from chatbot.app.model.data import ChatterOutput
 from chatbot.app.model.processor import AudioProcessor, TextProcessor
 
+DEFAULT_RESPONSE = "To use this feature, please paste your OpenAI API key."
+
 
 def set_openai_key(api_key: str) -> None:
     import openai
 
     openai.api_key = api_key if api_key else ""
-
-
-def generate_default_response(
-    history: List[Tuple[str, str]],
-    transcription: str,
-    speech_generator: Callable[[str], bytes],
-) -> ChatterOutput:
-    response = "To use this feature, please paste your OpenAI API key."
-    history.append((transcription, response))
-    speech = (PLAYBACK_SAMPLE_RATE, speech_generator(response))
-    return ChatterOutput(history, history, speech)
-
-
-def run_conversation_chain(
-    api_key: str,
-    chain: ConversationChain,
-    transcription: str,
-    history: List[Tuple[str, str]],
-    speech_generator: Callable[[str], bytes],
-) -> ChatterOutput:
-    set_openai_key(api_key)
-    output = chain.run(input=transcription)
-    speech = (PLAYBACK_SAMPLE_RATE, speech_generator(output))
-    history.append((transcription, output))
-    return ChatterOutput(history, history, speech)
 
 
 class Chatter:
@@ -62,11 +39,11 @@ class Chatter:
 
     def __call__(
         self,
-        api_key: str,
+        openai_api_key: str,
         audio_path: Optional[str],
         text_message: str,
         history: Optional[Tuple[str, str]],
-        chain: Optional[ConversationChain],
+        chainer: Optional[ConversationChain],
     ) -> Tuple[Any]:
         history = history or []
         chatter_output = ChatterOutput(history, history)
@@ -78,23 +55,43 @@ class Chatter:
                     else self.text_processor.process(text_message)
                 )
 
-                chatter_output = (
-                    generate_default_response(
-                        history=history,
-                        transcription=transcription,
-                        speech_generator=self.speech_generator,
-                    )
-                    if chain is None
-                    else run_conversation_chain(
-                        api_key=api_key,
-                        chain=chain,
-                        transcription=transcription,
-                        history=history,
-                        speech_generator=self.speech_generator,
-                    )
+                chatter_output = self._generate_chatter_output(
+                    openai_api_key=openai_api_key,
+                    chainer=chainer,
+                    transcription=transcription,
+                    history=history,
                 )
             except Exception as e:
                 self.logger.error(
                     f"[Chatter] Generation error - {type(e).__name__} - {e}"
                 )
         return astuple(chatter_output)
+
+    def _generate_chatter_output(
+        self,
+        openai_api_key: str,
+        chainer: Optional[ConversationChain],
+        transcription: str,
+        history: List[Tuple[str, str]],
+    ) -> ChatterOutput:
+        """
+        Generate ChatterOutput based on the given parameters.
+
+        Args:
+            openai_api_key (str): OpenAI API key.
+            chainer (Optional[ConversationChain]): ConversationChain instance.
+            transcription (str): Transcription of the input.
+            history (List[Tuple[str, str]]): List of conversation history.
+
+        Returns:
+            ChatterOutput: Resulting ChatterOutput object.
+        """
+        if chainer:
+            set_openai_key(openai_api_key)
+            response = chainer.run(input=transcription)
+        else:
+            response = DEFAULT_RESPONSE
+        new_history = (transcription, response)
+        history.append(new_history)
+        speech = (PLAYBACK_SAMPLE_RATE, self.speech_generator(response))
+        return ChatterOutput(history, history, speech)
