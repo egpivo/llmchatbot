@@ -1,8 +1,8 @@
 import bentoml
 from transformers import WhisperForConditionalGeneration, WhisperProcessor
 
-from chatbot.trainer import WHISPER_MODEL_NAME, WHISPER_PROCESSOR_NAME
-from chatbot.trainer.basic import BasicTrainer
+from chatbot.model.finetune import WHISPER_MODEL_NAME, WHISPER_PROCESSOR_NAME
+from chatbot.model.finetune.trainer.basic import BasicTrainer
 
 
 class Text2SpeechTrainer(BasicTrainer):

@@ -1,7 +1,7 @@
 import gradio as gr
 
-from chatbot.app.controller.chatter import Chatter
-from chatbot.app.view.component import (
+from chatbot.controller.chatter import Chatter
+from chatbot.view.component import (
     create_chatbot,
     create_chatbot_audio,
     create_head,
@@ -10,7 +10,7 @@ from chatbot.app.view.component import (
     create_user_audio_message,
     create_user_text_message,
 )
-from chatbot.app.view.utils import set_openai_api_key
+from chatbot.view.utils import set_openai_api_key
 
 
 class ChatbotViewer:

@@ -4,7 +4,7 @@ import numpy
 import pytest
 import torch
 
-from chatbot.app.model.utils import load_audio_data, load_speaker_embeddings
+from chatbot.model.utils import load_audio_data, load_speaker_embeddings
 
 FIXTURE_DIR = Path(__file__).parent.resolve() / "_fixture_files"
 

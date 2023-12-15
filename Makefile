@@ -4,7 +4,7 @@ EXECUTABLE := poetry run
 .PHONY: serve clean install clean-pyc clean-build clean-test test
 
 serve:
-	$(EXECUTABLE) bentoml serve chatbot/app/app.py
+	$(EXECUTABLE) bentoml serve chatbot/app.py
 
 clean: clean-pyc clean-build clean-test
 

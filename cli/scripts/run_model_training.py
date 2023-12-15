@@ -2,8 +2,8 @@ import argparse
 import logging
 from argparse import ArgumentParser
 
-from chatbot.trainer.speech2text import Speech2TextTrainer
-from chatbot.trainer.text2speech import Text2SpeechTrainer
+from chatbot.model.finetune.trainer.speech2text import Speech2TextTrainer
+from chatbot.model.finetune.trainer.text2speech import Text2SpeechTrainer
 
 logging.basicConfig(level=logging.INFO)
 
