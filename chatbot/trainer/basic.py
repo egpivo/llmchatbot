@@ -1,14 +1,19 @@
 import logging
+from abc import ABC, abstractmethod
 
 
-class BasicTrainer:
+class BasicTrainer(ABC):
     def __init__(self, processor_name: str, model_name: str, logger: logging.Logger):
         self.processor_name = processor_name
         self.model_name = model_name
         self.logger = logger
 
-    def train(self) -> None:
-        return NotImplementedError
+    @abstractmethod
+    def train(self):
+        return NotImplementedError(
+            "train method must be implemented in derived classes"
+        )
 
-    def save(self) -> None:
-        return NotImplementedError
+    @abstractmethod
+    def save(self):
+        return NotImplementedError("save method must be implemented in derived classes")

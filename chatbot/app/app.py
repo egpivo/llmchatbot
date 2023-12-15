@@ -17,7 +17,7 @@ from chatbot.app.model.bentoml_model import (
     WHISPER_MODEL,
     WHISPER_PROCESSOR,
 )
-from chatbot.app.view.view import create_view
+from chatbot.app.view.viewer import ChatbotViewer
 
 logging.basicConfig(level=logging.INFO)
 LOGGER = logging.getLogger()
@@ -55,5 +55,6 @@ def generate_speech(text: str) -> np.ndarray:
 
 chatter = Chatter(generate_speech, generate_text, WHISPER_PROCESSOR, LOGGER)
 app = FastAPI()
-app = gr.mount_gradio_app(app, create_view(chatter), path="/chatbot")
+viewer = ChatbotViewer(chatter)
+app = gr.mount_gradio_app(app, viewer.get_view(), path="/chatbot")
 svc.mount_asgi_app(app, "/")
