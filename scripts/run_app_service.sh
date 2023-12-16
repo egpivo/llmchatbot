@@ -16,9 +16,9 @@
 #
 
 CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PACKAGE_BASE_PATH="${CURRENT_DIR}/../../"
+PACKAGE_BASE_PATH="${CURRENT_DIR}/../"
 source "${PACKAGE_BASE_PATH}/.env"
-source "${PACKAGE_BASE_PATH}/bin/exit_code.sh"
+source "${CURRENT_DIR}/exit_code.sh"
 
 # Parse command line options
 while [[ $# -gt 0 ]]; do

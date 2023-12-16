@@ -1,4 +1,4 @@
-# ChatBot
+# Chatbot
 [![Tests](https://github.com/egpivo/chatbot/workflows/CI/badge.svg)](https://github.com/egpivo/chatbot/actions)
 [![Code Coverage](https://codecov.io/gh/egpivo/chatbot/branch/main/graph/badge.svg)](https://codecov.io/gh/egpivo/chatbot)
 
@@ -11,7 +11,7 @@ To install the `chatbot` Python package from this GitHub repository, you can use
 pip install git+https://github.com/egpivo/chatbot.git
 ```
 ## Serving Automation
-This repository provides an automated process for checking and fine-tuning pre-trained models for the ChatBot application. The automation script supports customization of SpeechT5 and SWhisper models, as well as enabling retraining if needed.
+This repository provides an automated process for checking and fine-tuning pre-trained models for the Chatbot application. The automation script supports customization of SpeechT5 and SWhisper models, as well as enabling retraining if needed.
 ### Serving Process Flow
 
 ```mermaid
@@ -24,17 +24,21 @@ graph TD
   A -- Yes --> C
   B --> C
 ```
+
+### Artifact Folder
+- During the model serving process, the `artifact` folder is dynamically created to contain the BentoML artifacts. These artifacts play a crucial role in serving the Chatbot application.
+
 ## Usage
 ### 1. Default Model Values
-Run the ChatBot service with default model values:
+Run the Chatbot service with default model values:
 ```shell
 make serve
 ```
 
 ### 2. Customizing the Serving Process
-To customize the ChatBot serving process, use the automation script. Specify your desired models and options as follows:
+To customize the Chatbot serving process, use the automation script. Specify your desired models and options as follows:
 ```shell
-bash cli/scripts/run_app_service.sh \
+bash scripts/run_app_service.sh \
   --t5_pretrained_model {t5_model} \
   --t5_pretrained_vocoder {t5_vocoder} \
   --whisper_pretrained_model {whisper_model} \

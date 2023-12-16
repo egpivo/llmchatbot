@@ -4,7 +4,7 @@ EXECUTABLE := poetry run
 .PHONY: serve clean install clean-pyc clean-build clean-test test
 
 serve:
-	$(SHELL) cli/scripts/run_app_service.sh
+	$(SHELL) scripts/run_app_service.sh
 
 clean: clean-pyc clean-build clean-test
 
