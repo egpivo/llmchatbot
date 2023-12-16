@@ -1,21 +1,30 @@
 import argparse
 import logging
+import os
+import sys
 from argparse import ArgumentParser
 
 from dotenv import load_dotenv
 
+from chatbot.exit_code import ExitCode
 from chatbot.model.finetune.executor import (
     execute_speech2text_training,
     execute_text2speech_training,
 )
+from chatbot.utils import check_and_finetune_models
 
 load_dotenv()
-
 logging.basicConfig(level=logging.INFO)
 
 
 def fetch_args() -> argparse.Namespace:
     arg_parser = ArgumentParser()
+    arg_parser.add_argument(
+        "--is_retraining",
+        action="store_true",
+        dest="is_retraining",
+        help="Retrain all models",
+    )
     arg_parser.add_argument(
         "--t5_pretrained_model",
         type=str,
@@ -43,11 +52,26 @@ def fetch_args() -> argparse.Namespace:
 if __name__ == "__main__":
     logger = logging.getLogger()
     arguments = fetch_args()
-    execute_speech2text_training(
-        t5_pretrained_model=arguments.t5_pretrained_model,
-        t5_pretrained_vocoder=arguments.t5_pretrained_vocoder,
-        logger=logger,
+    model_path = os.path.join(os.getenv("BENTOML_HOME"), "models")
+    status = check_and_finetune_models(model_path, logger)
+
+    if arguments.is_retraining:
+        status = 0
+        logger.info("Retraining speech2text models")
+        status += execute_speech2text_training(
+            t5_pretrained_model=arguments.t5_pretrained_model,
+            t5_pretrained_vocoder=arguments.t5_pretrained_vocoder,
+            logger=logger,
+        )
+        logger.info("Retraining text2speech models")
+        status += execute_text2speech_training(
+            whisper_pretrained_model=arguments.whisper_pretrained_model, logger=logger
+        )
+
+    EXIT_CODE = (
+        status
+        if status == ExitCode.SUCCESS.value
+        else ExitCode.MODEL_TRAINING_ERROR.value
     )
-    execute_text2speech_training(
-        whisper_pretrained_model=arguments.whisper_pretrained_model, logger=logger
-    )
+
+    sys.exit(EXIT_CODE)
