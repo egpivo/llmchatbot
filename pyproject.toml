@@ -24,6 +24,7 @@ llvmlite = "^0.39.1"
 librosa = "^0.10.0.post2"
 orjson = "3.8.10"
 fsspec= "^2023.9.2"
+python-dotenv = "^1.0.0"
 
 [tool.poetry.group.dev.dependencies]
 black = "^22.3.0"

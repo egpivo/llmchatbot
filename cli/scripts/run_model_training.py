@@ -2,8 +2,12 @@ import argparse
 import logging
 from argparse import ArgumentParser
 
+from dotenv import load_dotenv
+
 from chatbot.model.finetune.trainer.speech2text import Speech2TextTrainer
 from chatbot.model.finetune.trainer.text2speech import Text2SpeechTrainer
+
+load_dotenv()
 
 logging.basicConfig(level=logging.INFO)
 
@@ -11,21 +15,21 @@ logging.basicConfig(level=logging.INFO)
 def fetch_args() -> argparse.Namespace:
     arg_parser = ArgumentParser()
     arg_parser.add_argument(
-        name_or_flags="--t5_pretrained_model",
+        "--t5_pretrained_model",
         type=str,
         dest="t5_pretrained_model",
         default="microsoft/speecht5_tts",
         help="Speech-to-text pretrained model",
     )
     arg_parser.add_argument(
-        name_or_flags="--t5_pretrained_vocoderl",
+        "--t5_pretrained_vocoderl",
         type=str,
         dest="t5_pretrained_vocoderl",
         default="microsoft/speecht5_hifigan",
         help="Speech-to-text pretrained Vocoder",
     )
     arg_parser.add_argument(
-        name_or_flags="--whisper_pretrained_model",
+        "--whisper_pretrained_model",
         type=str,
         dest="whisper_pretrained_model",
         default="openai/whisper-tiny",

@@ -19,7 +19,7 @@ clean-test:
 	$(EXECUTABLE) rm -fr .tox/ .coverage coverage.* htmlcov/ .pytest_cache
 
 install: clean
-	$(EXECUTABLE) poetry install
+	$(EXECUTABLE) poetry install --sync
 	$(EXECUTABLE) poetry lock
 
 test:
