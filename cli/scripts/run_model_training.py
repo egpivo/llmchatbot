@@ -4,8 +4,10 @@ from argparse import ArgumentParser
 
 from dotenv import load_dotenv
 
-from chatbot.model.finetune.trainer.speech2text import Speech2TextTrainer
-from chatbot.model.finetune.trainer.text2speech import Text2SpeechTrainer
+from chatbot.model.finetune.executor import (
+    execute_speech2text_training,
+    execute_text2speech_training,
+)
 
 load_dotenv()
 
@@ -22,9 +24,9 @@ def fetch_args() -> argparse.Namespace:
         help="Speech-to-text pretrained model",
     )
     arg_parser.add_argument(
-        "--t5_pretrained_vocoderl",
+        "--t5_pretrained_vocoder",
         type=str,
-        dest="t5_pretrained_vocoderl",
+        dest="t5_pretrained_vocoder",
         default="microsoft/speecht5_hifigan",
         help="Speech-to-text pretrained Vocoder",
     )
@@ -38,27 +40,14 @@ def fetch_args() -> argparse.Namespace:
     return arg_parser.parse_args()
 
 
-def run_training_job(args: argparse.Namespace) -> None:
-    logger = logging.getLogger()
-
-    speech2text_trainer = Speech2TextTrainer(
-        processor_name=args.t5_pretrained_model,
-        model_name=args.t5_pretrained_model,
-        vocoder_name=args.t5_pretrained_vocoderl,
-        logger=logger,
-    )
-    speech2text_trainer.train()
-    speech2text_trainer.save()
-
-    text2speech_trainer = Text2SpeechTrainer(
-        processor_name=args.whisper_pretrained_model,
-        model_name=args.whisper_pretrained_model,
-        logger=logger,
-    )
-    text2speech_trainer.train()
-    text2speech_trainer.save()
-
-
 if __name__ == "__main__":
+    logger = logging.getLogger()
     arguments = fetch_args()
-    run_training_job(arguments)
+    execute_speech2text_training(
+        t5_pretrained_model=arguments.t5_pretrained_model,
+        t5_pretrained_vocoder=arguments.t5_pretrained_vocoder,
+        logger=logger,
+    )
+    execute_text2speech_training(
+        whisper_pretrained_model=arguments.whisper_pretrained_model, logger=logger
+    )

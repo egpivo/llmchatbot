@@ -1,4 +1,5 @@
 import logging
+import os
 
 import bentoml
 import gradio as gr
@@ -15,11 +16,15 @@ from chatbot.model.finetune.model_loader import (
     WHISPER_MODEL,
     WHISPER_PROCESSOR,
 )
+from chatbot.utils import check_and_finetune_models
 from chatbot.view.viewer import ChatbotViewer
 
 load_dotenv()
 logging.basicConfig(level=logging.INFO)
 LOGGER = logging.getLogger()
+
+model_path = os.path.join(os.getenv("BENTOML_HOME"), "models")
+check_and_finetune_models(model_path, LOGGER)
 
 speech2text_translator = bentoml.Runner(
     runnable_class=Speech2TextTranslator,
