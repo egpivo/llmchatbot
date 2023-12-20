@@ -15,8 +15,14 @@ def mock_chatter():
 def test_create_view(mock_chatter):
     viewer = ChatbotViewer(chatter=mock_chatter)
     assert isinstance(viewer.block, gr.Blocks)
-    assert isinstance(viewer.state, gr.State)
-    assert isinstance(viewer.agent_state, gr.State)
+
+
+def test_create_layout(mock_chatter):
+    layout = ChatbotViewer._create_layout()
+    assert isinstance(layout, tuple)
+    assert len(layout) == 5
+    for component in layout:
+        assert isinstance(component, gr.components.Component)
 
 
 def test_get_view(mock_chatter):

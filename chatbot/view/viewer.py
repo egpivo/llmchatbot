@@ -20,7 +20,7 @@ class ChatbotViewer:
         self.create_view()
 
     @staticmethod
-    def _create_layout() -> tuple[gr.components]:
+    def _create_layout() -> tuple[gr.components.Component]:
         with gr.Row():
             create_head()
 
