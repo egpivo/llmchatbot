@@ -54,4 +54,4 @@ fi
 
 # Serve BentoML App
 echo -e "$(tput setaf 2)Serve BentoML App$(tput sgr0)"
-bentoml serve chatbot/app.py
+bentoml serve chatbot/app.py:svc --reload
