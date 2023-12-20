@@ -14,7 +14,6 @@ def load_speaker_embeddings() -> torch.Tensor:
 
 
 def load_audio_data(audio_path: str) -> dict:
-    print(audio_path)
     audio_dataset = Dataset.from_dict({"audio": [audio_path]}).cast_column(
         "audio", Audio(sampling_rate=PLAYBACK_SAMPLE_RATE)
     )

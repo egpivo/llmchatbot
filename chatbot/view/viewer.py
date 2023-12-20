@@ -14,37 +14,49 @@ from chatbot.view.utils import set_openai_api_key
 
 
 class ChatbotViewer:
-    def __init__(self, chatter: Chatter):
+    def __init__(self, chatter: Chatter) -> None:
         self.chatter = chatter
         self.block = gr.Blocks(theme=create_theme())
-        self.state = gr.State()
-        self.agent_state = gr.State()
-
         self.create_view()
+
+    @staticmethod
+    def _create_layout() -> tuple[gr.components]:
+        with gr.Row():
+            create_head()
+
+        with gr.Row():
+            with gr.Column(scale=1, min_width=600):
+                openai_api_key_textbox = create_openai_api_key_textbox()
+                with gr.Row():
+                    audio_message = create_user_audio_message()
+                    text_message = create_user_text_message()
+            with gr.Column(scale=1, min_width=600):
+                chatbot = create_chatbot()
+                audio = create_chatbot_audio()
+
+        return (openai_api_key_textbox, audio_message, text_message, chatbot, audio)
 
     def create_view(self) -> None:
         with self.block:
-            with gr.Row():
-                create_head()
+            (
+                openai_api_key_textbox,
+                audio_message,
+                text_message,
+                chatbot,
+                audio,
+            ) = self._create_layout()
 
-            with gr.Row():
-                with gr.Column(scale=1, min_width=600):
-                    openai_api_key_textbox = create_openai_api_key_textbox()
-                    with gr.Row():
-                        audio_message = create_user_audio_message()
-                        text_message = create_user_text_message()
-                with gr.Column(scale=1, min_width=600):
-                    chatbot = create_chatbot()
-                    audio = create_chatbot_audio()
+            state = gr.State()
+            agent_state = gr.State()
 
             inputs = [
                 openai_api_key_textbox,
                 audio_message,
                 text_message,
-                self.state,
-                self.agent_state,
+                state,
+                agent_state,
             ]
-            outputs = [chatbot, self.state, audio, audio_message, text_message]
+            outputs = [chatbot, state, audio, audio_message, text_message]
 
             audio_message.change(
                 self.chatter, inputs=inputs, outputs=outputs, show_progress=True
@@ -55,7 +67,7 @@ class ChatbotViewer:
             openai_api_key_textbox.change(
                 set_openai_api_key,
                 inputs=[openai_api_key_textbox],
-                outputs=[self.agent_state],
+                outputs=[agent_state],
                 show_progress=True,
             )
 
