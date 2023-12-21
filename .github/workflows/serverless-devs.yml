@@ -18,7 +18,7 @@ jobs:
       # The default key configuration command is an Alibaba Cloud key configuration command. For more information, see the following topics:
       # Use GitHub Actions and Serverless Devs to implement CI/CD: http://short.devsapp.cn/cicd/github/action/usage
       # The official website of Serverless Devs is deployed by using Serverless Devs: http://short.devsapp.cn/cicd/github/action/practice
-      - run: s config add --AccountID ${{secrets.AccountID}} --AccessKeyID ${{secrets.AccessKeyID}} --AccessKeySecret ${{secrets.AccessKeySecret}} -a default
+      - run: s config add --AccountID ${{secrets.ALIYUN_ACCOUNT_ID}} --AccessKeyID ${{secrets.ALIYUN_ACCESS_KEY_ID}} --AccessKeySecret ${{secrets.ALIYUN_ACCESS_KEY_SECRET}} -a default
       - run: s build
       - run: rm -rf ./abc
       - run: s deploy
