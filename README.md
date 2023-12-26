@@ -59,6 +59,9 @@ Access the demo chatbot at `https://{ip}:{port}/chatbot`, with the default value
 - Note: Dummy SSL certificates and keys are created by default for secure communication. You can replace them manually.
 
 ## Demo
-- [Demo site]()
+- Explore the demo site hosted on Alibaba Cloud at [here](https://47.242.24.196:3389/chatbot/).
+![img.png](artifact/img.png)
+- Note: This site is intended for demo purposes only, and there is no guarantee of computing efficiency.
+
 ## Reference
 - [BentoChain Repository](https://github.com/ssheng/BentoChain)
