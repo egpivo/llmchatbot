@@ -1,6 +1,7 @@
 # Chatbot
 [![Tests](https://github.com/egpivo/chatbot/workflows/CI/badge.svg)](https://github.com/egpivo/chatbot/actions)
 [![Code Coverage](https://codecov.io/gh/egpivo/chatbot/branch/main/graph/badge.svg)](https://codecov.io/gh/egpivo/chatbot)
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-...." crossorigin="anonymous" />
 
 
 ## Installation
@@ -58,10 +59,12 @@ Access the demo chatbot at `https://{ip}:{port}/chatbot`, with the default value
 
 - Note: Dummy SSL certificates and keys are created by default for secure communication. You can replace them manually.
 
-## Demo
+## Demo <i class="fas fa-eye fa-lg"></i>
+
+
 - Explore the demo site hosted on Alibaba Cloud at [here](https://47.242.24.196:3389/chatbot/).
 ![img.png](artifact/img.png)
-- Note: This site is intended for demo purposes only, and there is no guarantee of computing efficiency.
+  - Note: This site is intended for demo purposes only, and there is no guarantee of computing efficiency.
 
 ## Reference
 - [BentoChain Repository](https://github.com/ssheng/BentoChain)
