@@ -14,10 +14,15 @@ from chatbot.view.utils import set_openai_api_key
 
 
 class ChatbotViewer:
-    def __init__(self, chatter: Chatter) -> None:
+    def __init__(
+        self, chatter: Chatter, title: str = "LLM Chatbot", favicon_path: str = None
+    ) -> None:
         self.chatter = chatter
-        self.block = gr.Blocks(theme=create_theme())
+        self.block = gr.Blocks(theme=create_theme(), title=title)
+
         self.create_view()
+        if favicon_path:
+            self.block.favicon_path = favicon_path
 
     @staticmethod
     def _create_layout() -> tuple[gr.components.Component]:

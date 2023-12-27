@@ -57,6 +57,7 @@ fi
 echo -e "$(tput setaf 2)Serve BentoML App$(tput sgr0)"
 KEY_PERM="${CURRENT_DIR}/key.pem"
 CERTIFICATE_PERM="${CURRENT_DIR}/cert.pem"
+
 if [[ ! -f "${KEY_PERM}" || ! -f "${CERTIFICATE_PERM}" ]]; then
   echo -e "$(tput setaf 3)Create a dummy SSL files$(tput sgr0)"
   SUBJ="/C=DK/ST=Test/O=Company Name"
@@ -67,6 +68,7 @@ if [[ ! -f "${KEY_PERM}" || ! -f "${CERTIFICATE_PERM}" ]]; then
    -sha256 -days 365 \
    -nodes -subj "$SUBJ"
 fi
+
 bentoml serve chatbot/app.py:svc \
  --reload \
  --ssl-keyfile "${KEY_PERM}" \

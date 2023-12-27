@@ -63,7 +63,7 @@ Access the demo chatbot at `https://{ip}:{port}/chatbot`, with the default value
 
 
 - Explore the demo site hosted on Alibaba Cloud at [here](https://47.242.24.196:3389/chatbot/).
-![img.png](artifact/img.png)
+![demo.png](artifact/image/demo_img.png)
   - Note: This site is intended for demo purposes only, and there is no guarantee of computing efficiency.
 
 ## Reference
