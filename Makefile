@@ -1,7 +1,8 @@
 SHELL := /bin/bash
 EXECUTABLE := poetry run
+APPLICATION_NAME ?= chatbot
 
-.PHONY: serve clean install clean-pyc clean-build clean-test test
+.PHONY: serve clean install test build prune
 
 serve:
 	$(SHELL) scripts/run_app_service.sh
@@ -24,3 +25,9 @@ install: clean
 
 test:
 	$(EXECUTABLE) pytest
+
+build:
+	docker build --tag $(APPLICATION_NAME) .
+
+prune:
+	docker image prune -f
