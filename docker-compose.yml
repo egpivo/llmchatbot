@@ -1,0 +1,8 @@
+version: '3'
+services:
+  chatbot:
+    image: chatbot.image.dev0
+    build:
+      context: .
+    ports:
+      - "3389:3389"

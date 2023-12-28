@@ -1,33 +1,32 @@
 SHELL := /bin/bash
 EXECUTABLE := poetry run
-APPLICATION_NAME ?= chatbot
 
-.PHONY: serve clean install test build prune
+.PHONY: local-serve clean install test docker-serve docker-prune
 
-serve:
-	$(SHELL) scripts/run_app_service.sh
+local-serve:
+	@$(SHELL) scripts/run_app_service.sh
 
 clean: clean-pyc clean-build clean-test
 
 clean-pyc:
-	$(EXECUTABLE) find . -type f -name '*.py[co]' -delete -o -type d -name __pycache__ -delete
+	@$(EXECUTABLE) find . -type f -name '*.py[co]' -delete -o -type d -name __pycache__ -delete
 
 clean-build:
-	$(EXECUTABLE) rm -fr build/ dist/ .eggs/
-	$(EXECUTABLE) find . -name '*.egg-info' -o -name '*.egg' -exec rm -fr {} +
+	@$(EXECUTABLE) rm -fr build/ dist/ .eggs/
+	@$(EXECUTABLE) find . -name '*.egg-info' -o -name '*.egg' -exec rm -fr {} +
 
 clean-test:
-	$(EXECUTABLE) rm -fr .tox/ .coverage coverage.* htmlcov/ .pytest_cache
+	@$(EXECUTABLE) rm -fr .tox/ .coverage coverage.* htmlcov/ .pytest_cache
 
 install: clean
-	$(EXECUTABLE) poetry install --sync
-	$(EXECUTABLE) poetry lock
+	@$(EXECUTABLE) poetry install --sync
+	@$(EXECUTABLE) poetry lock
 
 test:
-	$(EXECUTABLE) pytest
+	@$(EXECUTABLE) pytest
 
-build:
-	docker build --tag $(APPLICATION_NAME) .
+docker-serve:
+	@docker-compose up -d --build
 
-prune:
-	docker image prune -f
+docker-prune:
+	@docker image prune -f

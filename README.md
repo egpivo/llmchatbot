@@ -37,12 +37,14 @@ graph TD
 During the model serving process, the `artifact` folder is dynamically created to store the BentoML artifacts, essential for serving the Chatbot application.
 ## Usage
 ### I. Server Side
-#### 1. Default Model Values
+
+##### Local Model
+###### 1. Default Model Values
  Run the Chatbot service with default model values:
 ```shell
-make serve
+make local-serve
 ```
-#### 2. Customizing the Serving Process
+##### 2. Customizing the Serving Process
 Customize the Chatbot serving process using the automation script. Specify your desired models and options:
 ```shell
 bash scripts/run_app_service.sh \
@@ -54,6 +56,17 @@ bash scripts/run_app_service.sh \
 ```
 - **Note**: Replace `{t5_model}`, `{t5_vocoder}`, `{whisper_model}, and `{port}` with your preferred values. Adding the `--is_retraining` flag forces model retraining.
 
+##### Docker Model
+Run the Chatbot service using Docker:
+
+```shell
+docker-compose up -d --build
+```
+or
+```shell
+make docker-serve
+```
+
 ### II. Client Side
 Access the demo chatbot at `https://{ip}:{port}/chatbot`, with the default values being `0.0.0.0` for the `ip` and `3389` for the `port`.
 
@@ -64,7 +77,9 @@ Access the demo chatbot at `https://{ip}:{port}/chatbot`, with the default value
 
 - Explore the demo site hosted on Alibaba Cloud at [here](https://47.242.24.196:3389/chatbot/).
 ![demo.png](artifact/image/demo_img.png)
-  - Note: This site is intended for demo purposes only, and there is no guarantee of computing efficiency.
 
-## Reference
-- [BentoChain Repository](https://github.com/ssheng/BentoChain)
+- Note: This site is intended for demo purposes only, and there is no guarantee of computing efficiency.
+
+## Remark
+- Reference: [BentoChain Repository](https://github.com/ssheng/BentoChain)
+- **License:** [BSD 2-Clause License](LICENSE)
