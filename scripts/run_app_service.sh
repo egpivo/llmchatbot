@@ -8,7 +8,6 @@
 #     - --t5_pretrained_vocoder: Specifies the Hugging Face SpeechT5 HiFi-GAN Vocoder. Default: microsoft/speecht5_hifigan
 #     - --whisper_pretrained_model: Specifies the Hugging Face SWhisper model. Default: openai/whisper-tiny
 #     - --is_retraining: Forces retraining of models.
-#     - --port: Port. Default: 3389
 #
 # This script automates the process of checking and fine-tuning pre-trained models for the Chatbot application.
 # It supports customizing the SpeechT5 and SWhisper models, as well as enabling retraining if needed.
@@ -27,7 +26,6 @@ while [[ $# -gt 0 ]]; do
     --t5_pretrained_vocoder) T5_PRETRAINED_VOCODER="$2"; shift 2 ;;
     --whisper_pretrained_model) WHISPER_PRETRAINED_MODEL="$2"; shift 2 ;;
     --is_retraining) IS_RETRAINING=true; shift ;;
-    --port) PORT="$2"; shift 2 ;;
     *) shift ;;
   esac
 done
@@ -36,7 +34,6 @@ done
 T5_PRETRAINED_MODEL=${T5_PRETRAINED_MODEL:-"microsoft/speecht5_tts"}
 T5_PRETRAINED_VOCODER=${T5_PRETRAINED_VOCODER:-"microsoft/speecht5_hifigan"}
 WHISPER_PRETRAINED_MODEL=${WHISPER_PRETRAINED_MODEL:-"openai/whisper-tiny"}
-PORT=${PORT:-"3389"}
 
 # Set job commands
 JOB_COMMANDS=(
@@ -70,7 +67,4 @@ if [[ ! -f "${KEY_PERM}" || ! -f "${CERTIFICATE_PERM}" ]]; then
 fi
 
 bentoml serve chatbot/app.py:svc \
- --reload \
- --ssl-keyfile "${KEY_PERM}" \
- --ssl-certfile "${CERTIFICATE_PERM}" \
- --port "${PORT}"
+ --reload
