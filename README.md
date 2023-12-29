@@ -23,9 +23,10 @@ graph TD
   C[Serve the App]
   D[Check SSL Certificates]
   E[Generate Dummy SSL Certificates]
-
+  F[Load BentoML Configuration]
   A -- No --> B
-  A -- Yes --> C
+  A -- Yes --> F
+  F --> C
   B --> C
   C --> D
   D -- No --> E
