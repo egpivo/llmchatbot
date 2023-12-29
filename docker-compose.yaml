@@ -4,5 +4,6 @@ services:
     image: chatbot.image.dev0
     build:
       context: .
+      dockerfile: ./env/Dockerfile
     ports:
       - "3389:3389"
