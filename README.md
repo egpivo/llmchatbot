@@ -20,17 +20,18 @@ This repository automates the process of checking and fine-tuning pre-trained mo
 graph TD
   A[Check if Model Exists]
   B[Fine-Tune Model]
-  C[Serve the App]
-  D[Check SSL Certificates]
-  E[Generate Dummy SSL Certificates]
-  F[Load BentoML Configuration]
+  C[Load BentoML Configuration]
+  D[Serve the App]
+  E[Check SSL Certificates]
+  F[Generate Dummy SSL Certificates]
+
+  A -- Yes --> C
   A -- No --> B
-  A -- Yes --> F
-  F --> C
   B --> C
   C --> D
-  D -- No --> E
-  D -- Yes --> C
+  D --> E
+  E -- No --> F
+  E -- Yes --> D
 
 ```
 
@@ -47,15 +48,16 @@ make local-serve
 ```
 ##### 2. Customizing the Serving Process
 Customize the Chatbot serving process using the automation script. Specify your desired models and options:
+
 ```shell
 bash scripts/run_app_service.sh \
-  --t5_pretrained_model {t5_model} \
-  --t5_pretrained_vocoder {t5_vocoder} \
-  --whisper_pretrained_model {whisper_model} \
-  --is_retraining \
-  --port {port}
+  --t5_pretrained_model {replace_with_actual_t5_model} \
+  --t5_pretrained_vocoder {replace_with_actual_t5_vocoder} \
+  --whisper_pretrained_model {replace_with_actual_whisper_model} \
+  --is_retraining
 ```
-- **Note**: Replace `{t5_model}`, `{t5_vocoder}`, `{whisper_model}, and `{port}` with your preferred values. Adding the `--is_retraining` flag forces model retraining.
+- **Note**: Replace `{replace_with_actual_t5_model}`, `{replace_with_actual_t5_vocoder}`, and `{replace_with_actual_whisper_model}` with your preferred values. Adding the `--is_retraining` flag forces model retraining.
+
 
 ##### Docker Model
 Run the Chatbot service using Docker:
@@ -69,9 +71,9 @@ make docker-serve
 ```
 
 ### II. Client Side
-Access the demo chatbot at `https://{ip}:{port}/chatbot`, with the default values being `0.0.0.0` for the `ip` and `3389` for the `port`.
+Access the demo chatbot at `https://{ip}:{port}/chatbot`, with the default values being `0.0.0.0` for the `ip` and `443` for the `port`.
 
-- Note: Dummy SSL certificates and keys are created by default for secure communication. You can replace them manually.
+- Note: Dummy SSL certificates and keys are created by default for secure communication. You can replace them manually in `env/bentoml_configuration.yaml`.
 
 ## Demo <i class="fas fa-eye fa-lg"></i>
 
