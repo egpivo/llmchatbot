@@ -81,7 +81,7 @@ make docker-serve
 ### Client Side
 Access the demo chatbot at `https://{ip}/chatbot`, with the default values being `0.0.0.0` for the `ip`.
 
-- Note: Dummy SSL certificates and keys are created by default for secure communication if `key.pem` and `cert.pem` do not exit in `"artifacts/. Or you can replace them manually.
+- Note: Dummy SSL certificates and keys are created by default for secure communication if `key.pem` and `cert.pem` do not exit in `artifacts/`. Or you can replace them manually.
 
 ## Demo <i class="fas fa-eye fa-lg"></i>
 - Explore the demo site hosted on Alibaba Cloud via https://egpivo.com/chatbot/.
