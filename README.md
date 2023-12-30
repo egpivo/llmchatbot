@@ -1,12 +1,11 @@
 # Chatbot
-
-[![Tests](https://github.com/egpivo/chatbot/workflows/CI/badge.svg)](https://github.com/egpivo/chatbot/actions)
-[![Code Coverage](https://codecov.io/gh/egpivo/chatbot/branch/main/graph/badge.svg)](https://codecov.io/gh/egpivo/chatbot)
-
-![Docker Automated build](https://img.shields.io/docker/automated/egpivo/chatbot)
-![Docker Pulls](https://img.shields.io/docker/pulls/egpivo/chatbot)
-![Docker Image Version (tag latest semver)](https://img.shields.io/docker/v/egpivo/chatbot/main)
-
+<p /center>
+<a href="https://github.com/egpivo/chatbot/actions"><img src="https://github.com/egpivo/chatbot/workflows/CI/badge.svg"/></a>
+<a href="https://codecov.io/gh/egpivo/chatbot"><img src="https://codecov.io/gh/egpivo/chatbot/branch/main/graph/badge.svg"/></a>
+<a href="https://hub.docker.com/r/egpivo/chatbot/tags"><img src="https://img.shields.io/docker/pulls/egpivo/chatbot"/></a>
+<a href="https://hub.docker.com/r/egpivo/chatbot/tags"><img src="https://img.shields.io/docker/automated/egpivo/chatbot"/></a>
+<a href="https://hub.docker.com/r/egpivo/chatbot/tags"><img src="https://img.shields.io/docker/v/egpivo/chatbot/latest"/></a>
+</p>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-...." crossorigin="anonymous" />
 
 
