@@ -34,6 +34,6 @@ COPY . /chatbot
 # Add metadata labels
 LABEL maintainer="Your Name <your.email@example.com>" \
       description="Docker image for Chatbot application" \
-      version="1.0"
+      version="1.0.0"
 
-ENTRYPOINT ["/bin/bash", "-c", "source $VIRTUAL_ENV/bin/activate && pip list"]
+ENTRYPOINT ["/bin/bash", "-c", "source $VIRTUAL_ENV/bin/activate && make local-serve"]
