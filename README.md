@@ -1,6 +1,12 @@
 # Chatbot
+
 [![Tests](https://github.com/egpivo/chatbot/workflows/CI/badge.svg)](https://github.com/egpivo/chatbot/actions)
 [![Code Coverage](https://codecov.io/gh/egpivo/chatbot/branch/main/graph/badge.svg)](https://codecov.io/gh/egpivo/chatbot)
+
+![Docker Automated build](https://img.shields.io/docker/automated/egpivo/chatbot)
+![Docker Pulls](https://img.shields.io/docker/pulls/egpivo/chatbot)
+![Docker Image Version (tag latest semver)](https://img.shields.io/docker/v/egpivo/chatbot/main)
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-...." crossorigin="anonymous" />
 
 
