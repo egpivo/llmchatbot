@@ -45,8 +45,7 @@ During the model serving process, the `artifacts` folder is used to store the Be
 ## Usage
 ### Local Model Serving
 #### Default Model Values
-
- Run the Chatbot service with default model values:
+Run the Chatbot service with default model values:
 ```shell
 make local-serve
 ```
@@ -64,12 +63,12 @@ bash scripts/run_app_service.sh \
 
 
 ### Model Serving via Docker
-#### Run the Chatbot service using Docker in the `chatbot` repo:
+#### By Makefile:
 ```shell
 make docker-serve
 ```
 
-##### Run the command via 
+#### By `docker` CLI
 - DockerHub
   ```shell
   docker run -p 443:443 egpivo/chatbot:latest
