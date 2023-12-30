@@ -1,39 +1,27 @@
-FROM python:3.10-buster as builder
+FROM python:3.10.12
 
-RUN pip install --no-cache-dir --user poetry==1.6.1
-
-ENV POETRY_NO_INTERACTION=1 \
+ENV POETRY_HOME=/root/.poetry \
+    POETRY_VERSION=1.6.1 \
+    POETRY_NO_INTERACTION=1 \
     POETRY_VIRTUALENVS_IN_PROJECT=1 \
     POETRY_VIRTUALENVS_CREATE=1 \
-    POETRY_CACHE_DIR=/tmp/poetry_cache \
-    PATH="${PATH}:/root/.local/bin"
+    POETRY_CACHE_DIR=/tmp/poetry_cache
 
 WORKDIR /chatbot
-
-COPY . ./
-
-RUN --mount=type=cache,target=$POETRY_CACHE_DIR poetry config installer.max-workers 10 && \
-    poetry install
-
-# Runtime stage
-FROM python:3.10-slim-buster as runtime
 
 RUN apt-get update && \
     apt-get install -y make libsndfile1 && \
-    apt-get install -y make && \
     rm -rf /var/lib/apt/lists/*
 
-ENV VIRTUAL_ENV=/chatbot/.venv \
-    PATH="/chatbot/.venv/bin:$PATH"
+COPY . .
 
-WORKDIR /chatbot
-
-COPY --from=builder ${VIRTUAL_ENV} ${VIRTUAL_ENV}
-COPY . /chatbot
+RUN pip install --no-cache-dir poetry==${POETRY_VERSION} && \
+    poetry config installer.max-workers 10 && \
+    poetry install
 
 # Add metadata labels
-LABEL maintainer="Your Name <your.email@example.com>" \
+LABEL maintainer="Joseph Wang <egpivo@gmail.com>" \
       description="Docker image for Chatbot application" \
-      version="1.0.0"
+      version="1.0.1"
 
-ENTRYPOINT ["/bin/bash", "-c", "source $VIRTUAL_ENV/bin/activate && make local-serve"]
+ENTRYPOINT ["/bin/bash", "-c", "source $(poetry env info --path)/bin/activate && make local-serve"]
