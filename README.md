@@ -79,7 +79,7 @@ Access the demo chatbot at `https://{ip}:{port}/chatbot`, with the default value
 
 
 - Explore the demo site hosted on Alibaba Cloud via https://egpivo.com/chatbot/.
-![demo.png](artifact/image/demo_img.png)
+![demo.png](artifacts/image/demo_img.png)
 
 - Note: This site is intended for demo purposes only, and there is no guarantee of computing efficiency.
 

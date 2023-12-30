@@ -18,8 +18,8 @@ api_server:
         span_id: 016x
   ssl:
     enabled: true
-    certfile: "artifact/cert.pem"
-    keyfile: "artifact/key.pem"
+    certfile: "artifacts/cert.pem"
+    keyfile: "artifacts/key.pem"
     keyfile_password: ~
     ca_certs: ~
     version: 17 # ssl.PROTOCOL_TLS_SERVER
