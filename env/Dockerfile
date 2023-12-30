@@ -36,4 +36,4 @@ LABEL maintainer="Your Name <your.email@example.com>" \
       description="Docker image for Chatbot application" \
       version="1.0"
 
-ENTRYPOINT ["/bin/bash", "-c", "source $VIRTUAL_ENV/bin/activate && make serve"]
+ENTRYPOINT ["/bin/bash", "-c", "source $VIRTUAL_ENV/bin/activate && make local-serve"]
