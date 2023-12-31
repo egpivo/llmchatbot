@@ -1,4 +1,8 @@
 # NEWS
+## Chatbot 1.0.2 (Release date: 2023-12-31)
+### Enhancement
+- Reduce the image size from 8GB to 2GB
+
 ## Chatbot 1.0.1 (Release date: 2023-12-31)
 ### Bugfix
 - Incorrect entrypoint in Dockerfile; polish the Dockerfile by reducing multi-stage installation
