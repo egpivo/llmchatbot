@@ -1,4 +1,8 @@
 # NEWS
+## Chatbot 1.0.1 (Release date: 2023-12-31)
+### Bugfix
+- Incorrect entrypoint in Dockerfile; polish the Dockerfile by reducing multi-stage installation
+
 
 ## Chatbot 1.0.0 (Release date: 2023-12-30)
 #### Overview
