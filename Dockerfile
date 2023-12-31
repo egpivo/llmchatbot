@@ -1,4 +1,4 @@
-FROM python:3.10.12
+FROM python:3.10-slim-buster
 
 ENV POETRY_HOME=/root/.poetry \
     POETRY_VERSION=1.6.1 \
@@ -11,6 +11,7 @@ WORKDIR /chatbot
 
 RUN apt-get update && \
     apt-get install -y make libsndfile1 && \
+    apt-get install gcc -y && \
     rm -rf /var/lib/apt/lists/*
 
 COPY . .
