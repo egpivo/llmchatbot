@@ -4,7 +4,7 @@ EXECUTABLE := poetry run
 .PHONY: local-serve clean install test docker-serve docker-prune
 
 local-serve:
-	@$(SHELL) scripts/run_app_service.sh
+	@$(SHELL) scripts/run_app_service.sh --is_production
 
 clean: clean-pyc clean-build clean-test
 
