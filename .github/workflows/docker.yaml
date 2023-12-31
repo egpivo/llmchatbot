@@ -30,22 +30,13 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GH_TOKEN }}
 
-      - name: Get full image name
-        id: base_image_name
-        env:
-          BASE_IMAGE_NAME: ${{ github.repository }}
-        run: |
-          if [[ $GITHUB_REF == refs/tags/v* ]]; then
-            echo "image_name=${REGISTRY}/${BASE_IMAGE_NAME}" >> $GITHUB_OUTPUT
-          else
-            echo "image_name=${REGISTRY}/${BASE_IMAGE_NAME}-stage" >> $GITHUB_OUTPUT
-          fi
-
       - name: Extract metadata (tags, labels) for Docker
         id: meta
         uses: docker/metadata-action@9ec57ed1fcdbf14dcef7dfbe97b2010124a938b7
         with:
-          images: ${{ steps.base_image_name.outputs.image_name }}
+          images: |
+            egpivo/chatbot
+            ghcr.io/${{ github.repository }}
           tags: |
             type=raw,value=latest
             type=semver,pattern={{version}},prefix=v
