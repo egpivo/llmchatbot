@@ -2,9 +2,13 @@ name: Publish Docker image
 
 on:
   push:
-    branches: ["enhancement/reduce-image-size"]
-  release:
-    types: [published]
+    branches:
+      - "main"
+    tags:
+      - "v*"
+  pull_request:
+    branches:
+      - "main"
 
 jobs:
   push_to_registries:
@@ -46,6 +50,6 @@ jobs:
         uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
         with:
           context: .
-          push: true
+          push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
