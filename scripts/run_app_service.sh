@@ -18,7 +18,7 @@
 
 CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PACKAGE_BASE_PATH="${CURRENT_DIR}/../"
-source "${PACKAGE_BASE_PATH}/.env"
+source "${PACKAGE_BASE_PATH}/envs/.env"
 source "${CURRENT_DIR}/exit_code.sh"
 
 # Parse command line options

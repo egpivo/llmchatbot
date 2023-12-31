@@ -4,7 +4,7 @@ import os
 import sys
 from argparse import ArgumentParser
 
-from dotenv import load_dotenv
+from dotenv import find_dotenv, load_dotenv
 
 from chatbot.exit_code import ExitCode
 from chatbot.model.finetune.executor import (
@@ -13,7 +13,9 @@ from chatbot.model.finetune.executor import (
 )
 from chatbot.utils import check_and_finetune_models
 
-load_dotenv()
+dotenv_file = find_dotenv("envs/.env")
+load_dotenv(dotenv_file)
+
 logging.basicConfig(level=logging.INFO)
 
 
