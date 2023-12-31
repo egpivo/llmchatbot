@@ -3,7 +3,7 @@ import logging
 import bentoml
 import gradio as gr
 import numpy as np
-from dotenv import load_dotenv
+from dotenv import find_dotenv, load_dotenv
 from fastapi import FastAPI
 
 from chatbot.controller.chatter import Chatter
@@ -17,7 +17,9 @@ from chatbot.model.finetune.model_loader import (
 )
 from chatbot.view.viewer import ChatbotViewer
 
-load_dotenv()
+dotenv_file = find_dotenv("envs/.env")
+load_dotenv(dotenv_file)
+
 logging.basicConfig(level=logging.INFO)
 LOGGER = logging.getLogger()
 

@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "chatbot"
-version = "1.0.1"
+version = "1.0.2"
 description = ""
 authors = ["Joseph Wang <egpivo@gmail.com>"]
 readme = "README.md"

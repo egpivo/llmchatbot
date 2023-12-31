@@ -18,7 +18,7 @@
 
 CURRENT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PACKAGE_BASE_PATH="${CURRENT_DIR}/../"
-source "${PACKAGE_BASE_PATH}/.env"
+source "${PACKAGE_BASE_PATH}/envs/.env"
 source "${CURRENT_DIR}/exit_code.sh"
 
 # Parse command line options
@@ -72,10 +72,9 @@ fi
 
 if [[ "x${IS_PRODUCTION}x" == "xTRUEx" ]]; then
   echo -e "$(tput setaf 2)Production Mode$(tput sgr0)"
-  bentoml serve chatbot/app.py:svc \
-  --production
+  bentoml serve ${PACKAGE_BASE_PATH}/chatbot/app.py:svc
 else
   echo -e "$(tput setaf 2)Development Mode$(tput sgr0)"
-  bentoml serve chatbot/app.py:svc \
+  bentoml serve ${PACKAGE_BASE_PATH}/chatbot/app.py:svc \
   --reload
 fi
