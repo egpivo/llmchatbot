@@ -3,7 +3,13 @@ name: Publish Docker image
 on:
   push:
     branches:
-      - "egpivo-patch-1"
+      - "main"
+    tags:
+      - "v*"
+  pull_request:
+    branches:
+      - "main"
+
 jobs:
   push_to_registries:
     name: Push Docker image to multiple registries
@@ -42,8 +48,7 @@ jobs:
           images: |
             egpivo/chatbot
             ghcr.io/${{ github.repository }}
-            ghcr.io/${{ github.repository }}
-            registry-intl.cn-hongkong.aliyuncs.com/${{ github.repository }}
+            registry-intl.cn-hongkong.aliyuncs.com/egpivo/chatbot
           tags: |
             type=raw,value=latest
             type=semver,pattern={{version}},prefix=v
