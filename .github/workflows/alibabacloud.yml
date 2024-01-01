@@ -33,7 +33,7 @@ env:
   ACK_CLUSTER_ID: c80523bc1db2b4c73a7cb4f28695ad086
   ACK_DEPLOYMENT_NAME: chatbot
 
-  ACR_EE_REGISTRY: myregistry.cn-hongkong.cr.aliyuncs.com
+  ACR_EE_REGISTRY: registry-intl.cn-hongkong.aliyuncs.com
   ACR_EE_INSTANCE_ID: instanceID
   ACR_EE_NAMESPACE: egpivo
   ACR_EE_IMAGE: chatbot
