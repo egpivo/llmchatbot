@@ -64,8 +64,8 @@ jobs:
       uses: aliyun/acr-scan@v1
       with:
         region-id:  "{{ env.REGION_ID }}"
-        access-key-id: "${{ secrets.ACCESS_KEY_ID }}"
-        access-key-secret: "${{ secrets.ACCESS_KEY_SECRET }}"
+        access-key-id: "${{ secrets.ALIYUN_ACCESS_KEY_ID }}"
+        access-key-secret: "${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}"
         repository: "${{ env.NAMESPACE }}/${{ env.IMAGE }}"
         tag: "${{ env.TAG }}"
 
@@ -74,8 +74,8 @@ jobs:
       uses: aliyun/ack-set-context@v1
       with:
         region-id:  "{{ env.REGION_ID }}"
-        access-key-id: "${{ secrets.ACCESS_KEY_ID }}"
-        access-key-secret: "${{ secrets.ACCESS_KEY_SECRET }}"
+        access-key-id: "${{ secrets.ALIYUN_ACCESS_KEY_ID }}"
+        access-key-secret: "${{ secrets.ALIYUN_ACCESS_KEY_SECRET }}"
         cluster-id: "${{ env.ACK_CLUSTER_ID }}"
 
     # 3.2 Deploy the image to the ACK cluster
