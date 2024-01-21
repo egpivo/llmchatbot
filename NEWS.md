@@ -1,4 +1,8 @@
 # NEWS
+## Chatbot 1.0.3 (Release date: 2024-01-21)
+### Operation
+- Submit the package to PyPi by renaming project and file names.
+
 ## Chatbot 1.0.2 (Release date: 2023-12-31)
 ### Enhancement
 - Reduce the image size from 8GB to 2GB
