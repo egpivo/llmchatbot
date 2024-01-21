@@ -1,5 +1,4 @@
 # LLM-Chatbot
-# LLM-Chatbot
 <p align="center">
   <a href="https://github.com/egpivo/chatbot/actions"><img src="https://github.com/egpivo/chatbot/workflows/CI/badge.svg"/></a>
   <a href="https://codecov.io/gh/egpivo/chatbot"><img src="https://codecov.io/gh/egpivo/chatbot/branch/main/graph/badge.svg"/></a>
@@ -81,7 +80,7 @@ make docker-serve
   ```
 - GitHub Package
   ```shell
-  docker run -p 443:443 ghcr.io/egpivo/chatbot:latest
+  docker run -p 443:443 ghcr.io/egpivo/llmchatbot:latest
   ```
 ### Client Side
 Access the demo chatbot at `https://{ip}/chatbot`, with the default values being `0.0.0.0` for the `ip`.
