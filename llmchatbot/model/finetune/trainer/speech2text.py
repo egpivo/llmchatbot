@@ -3,8 +3,8 @@ import logging
 import bentoml
 from transformers import SpeechT5ForTextToSpeech, SpeechT5HifiGan, SpeechT5Processor
 
-from chatbot.model.finetune import T5_MODEL_NAME, T5_PROCESSOR_NAME, T5_VOCODER_NAME
-from chatbot.model.finetune.trainer.basic import BasicTrainer
+from llmchatbot.model.finetune import T5_MODEL_NAME, T5_PROCESSOR_NAME, T5_VOCODER_NAME
+from llmchatbot.model.finetune.trainer.basic import BasicTrainer
 
 
 class Speech2TextTrainer(BasicTrainer):

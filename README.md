@@ -1,20 +1,26 @@
-# Chatbot
-<p /center>
+# LLM-Chatbot
+# LLM-Chatbot
+<p align="center">
   <a href="https://github.com/egpivo/chatbot/actions"><img src="https://github.com/egpivo/chatbot/workflows/CI/badge.svg"/></a>
   <a href="https://codecov.io/gh/egpivo/chatbot"><img src="https://codecov.io/gh/egpivo/chatbot/branch/main/graph/badge.svg"/></a>
   <a href="https://hub.docker.com/r/egpivo/chatbot/tags"><img src="https://img.shields.io/docker/pulls/egpivo/chatbot"/></a>
   <a href="https://hub.docker.com/r/egpivo/chatbot/tags"><img src="https://img.shields.io/docker/image-size/egpivo/chatbot"/></a>
-  <a href="https://hub.docker.com/r/egpivo/chatbot/tags"><img src="https://img.shields.io/docker/v/egpivo/chatbot/latest"/></a>
+  <a href="https://pypi.org/project/llmchatbot/"><img src="https://img.shields.io/pypi/v/llmchatbot.svg?logo=pypi&label=PyPI&logoColor=silver"/></a>
 </p>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-...." crossorigin="anonymous" />
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-...." crossorigin="anonymous" />
 
 ## Installation
 
-To get the Chatbot Python package from this GitHub repository, use the following command:
+To get the Chatbot Python package by the following commands:
+1. PyPy
+```shell
+pip install llmchatbot
+```
 
+2. GitHub repository
 ```bash
-pip install git+https://github.com/egpivo/chatbot.git
+pip install git+https://github.com/egpivo/llmchatbot.git
 ```
 ## Serving Automation
 This repository automates the process of checking and fine-tuning pre-trained models for the Chatbot application. The automation script allows you to customize SpeechT5 and SWhisper models and enables retraining if needed.

@@ -7,7 +7,7 @@ ENV POETRY_HOME=/root/.poetry \
     POETRY_VIRTUALENVS_CREATE=1 \
     POETRY_CACHE_DIR=/tmp/poetry_cache
 
-WORKDIR /chatbot
+WORKDIR /llmchatbot
 
 FROM base as builder
 
@@ -26,9 +26,9 @@ RUN pip install --no-cache-dir poetry==${POETRY_VERSION} && \
 FROM base as final
 
 #COPY . ./
-COPY --from=builder /chatbot/.venv ./.venv
-COPY --from=builder /chatbot/dist/ .
-COPY chatbot/app.py ./chatbot/app.py
+COPY --from=builder /llmchatbot/.venv ./.venv
+COPY --from=builder /llmchatbot/dist/ .
+COPY llmchatbot/app.py ./llmchatbot/app.py
 COPY scripts ./scripts
 COPY envs ./envs
 
@@ -37,6 +37,6 @@ RUN ./.venv/bin/pip install *.whl
 # Add metadata labels
 LABEL maintainer="Joseph Wang <egpivo@gmail.com>" \
       description="Docker image for Chatbot application" \
-      version="1.0.2"
+      version="1.0.3"
 
 ENTRYPOINT ["/bin/bash", "-c", "source .venv/bin/activate && scripts/run_app_service.sh --is_production"]

@@ -1,9 +1,9 @@
 import logging
 import os
 
-from chatbot.exit_code import ExitCode
-from chatbot.model.finetune import SPEECH2TEXT_CANDIDATES, TEXT2SPEECH_CANDIDATES
-from chatbot.model.finetune.executor import (
+from llmchatbot.exit_code import ExitCode
+from llmchatbot.model.finetune import SPEECH2TEXT_CANDIDATES, TEXT2SPEECH_CANDIDATES
+from llmchatbot.model.finetune.executor import (
     execute_speech2text_training,
     execute_text2speech_training,
 )

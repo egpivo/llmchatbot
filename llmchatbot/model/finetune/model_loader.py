@@ -1,6 +1,6 @@
 import bentoml
 
-from chatbot.model.finetune import (
+from llmchatbot.model.finetune import (
     T5_MODEL_NAME,
     T5_PROCESSOR_NAME,
     T5_VOCODER_NAME,

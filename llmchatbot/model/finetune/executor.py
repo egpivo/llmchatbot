@@ -1,8 +1,8 @@
 import logging
 
-from chatbot.exit_code import ExitCode
-from chatbot.model.finetune.trainer.speech2text import Speech2TextTrainer
-from chatbot.model.finetune.trainer.text2speech import Text2SpeechTrainer
+from llmchatbot.exit_code import ExitCode
+from llmchatbot.model.finetune.trainer.speech2text import Speech2TextTrainer
+from llmchatbot.model.finetune.trainer.text2speech import Text2SpeechTrainer
 
 
 def execute_speech2text_training(

@@ -17,7 +17,7 @@ def create_openai_api_key_textbox() -> gr.Textbox:
 def create_chatbot() -> gr.Chatbot:
     return gr.Chatbot(
         value=[],
-        elem_id="chatbot",
+        elem_id="llmchatbot",
     )
 
 
