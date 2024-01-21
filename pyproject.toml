@@ -8,7 +8,7 @@ homepage = "https://github.com/egpivo/chatbot"
 repository = "https://github.com/egpivo/chatbot"
 
 include = [
-    "LICENSE",
+    "LICENSE"
 ]
 
 [tool.poetry.dependencies]

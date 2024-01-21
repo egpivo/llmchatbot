@@ -3,8 +3,8 @@ from unittest.mock import MagicMock
 import gradio as gr
 import pytest
 
-from chatbot.controller.chatter import Chatter
-from chatbot.view.viewer import ChatbotViewer
+from llmchatbot.controller.chatter import Chatter
+from llmchatbot.view.viewer import ChatbotViewer
 
 
 @pytest.fixture

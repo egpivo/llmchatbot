@@ -3,7 +3,7 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from chatbot.view.utils import set_openai_api_key
+from llmchatbot.view.utils import set_openai_api_key
 
 
 @pytest.fixture
@@ -12,7 +12,7 @@ def mock_os_environ():
         yield
 
 
-@patch("chatbot.view.utils.load_chainer")
+@patch("llmchatbot.view.utils.load_chainer")
 def test_set_openai_api_key(mock_load_chainer):
     mock_chain = MagicMock()
     mock_load_chainer.return_value = mock_chain

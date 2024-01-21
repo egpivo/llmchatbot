@@ -72,9 +72,9 @@ fi
 
 if [[ "x${IS_PRODUCTION}x" == "xTRUEx" ]]; then
   echo -e "$(tput setaf 2)Production Mode$(tput sgr0)"
-  bentoml serve ${PACKAGE_BASE_PATH}/chatbot/app.py:svc
+  bentoml serve ${PACKAGE_BASE_PATH}/llmchatbot/app.py:svc
 else
   echo -e "$(tput setaf 2)Development Mode$(tput sgr0)"
-  bentoml serve ${PACKAGE_BASE_PATH}/chatbot/app.py:svc \
+  bentoml serve ${PACKAGE_BASE_PATH}/llmchatbot/app.py:svc \
   --reload
 fi

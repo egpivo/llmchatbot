@@ -71,11 +71,11 @@ make docker-serve
 #### By `docker` CLI
 - DockerHub
   ```shell
-  docker run -p 443:443 egpivo/chatbot:latest
+  docker run -p 443:443 egpivo/llmchatbot:latest
   ```
 - GitHub Package
   ```shell
-  docker run -p 443:443 ghcr.io/egpivo/chatbot:latest
+  docker run -p 443:443 ghcr.io/egpivo/llmchatbot:latest
   ```
 ### Client Side
 Access the demo chatbot at `https://{ip}/chatbot`, with the default values being `0.0.0.0` for the `ip`.

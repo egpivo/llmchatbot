@@ -2,7 +2,7 @@ from typing import Callable, Optional
 
 from transformers import Pipeline
 
-from chatbot.model.utils import load_audio_data
+from llmchatbot.model.utils import load_audio_data
 
 
 class AudioProcessor:

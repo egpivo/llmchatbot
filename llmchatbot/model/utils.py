@@ -1,7 +1,7 @@
 import torch
 from datasets import Audio, Dataset, load_dataset
 
-from chatbot.model import PLAYBACK_SAMPLE_RATE
+from llmchatbot.model import PLAYBACK_SAMPLE_RATE
 
 
 def load_speaker_embeddings() -> torch.Tensor:

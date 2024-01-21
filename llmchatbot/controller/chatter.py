@@ -7,9 +7,9 @@ import bentoml
 from bentoml._internal.models.model import Model
 from langchain.chains import ConversationChain
 
-from chatbot.model import PLAYBACK_SAMPLE_RATE
-from chatbot.model.data import ChatterOutput
-from chatbot.model.processor import AudioProcessor, TextProcessor
+from llmchatbot.model import PLAYBACK_SAMPLE_RATE
+from llmchatbot.model.data import ChatterOutput
+from llmchatbot.model.processor import AudioProcessor, TextProcessor
 
 DEFAULT_RESPONSE = "To use this feature, please paste your OpenAI API key."
 

@@ -6,16 +6,19 @@ import numpy as np
 from dotenv import find_dotenv, load_dotenv
 from fastapi import FastAPI
 
-from chatbot.controller.chatter import Chatter
-from chatbot.controller.translator import Speech2TextTranslator, Text2SpeechTranslator
-from chatbot.model.finetune.model_loader import (
+from llmchatbot.controller.chatter import Chatter
+from llmchatbot.controller.translator import (
+    Speech2TextTranslator,
+    Text2SpeechTranslator,
+)
+from llmchatbot.model.finetune.model_loader import (
     T5_MODEL,
     T5_PROCESSOR,
     T5_VOCODER,
     WHISPER_MODEL,
     WHISPER_PROCESSOR,
 )
-from chatbot.view.viewer import ChatbotViewer
+from llmchatbot.view.viewer import ChatbotViewer
 
 dotenv_file = find_dotenv("envs/.env")
 load_dotenv(dotenv_file)
@@ -36,7 +39,7 @@ text2speech_translator = bentoml.Runner(
 )
 
 svc = bentoml.Service(
-    name="chatbot",
+    name="llmchatbot",
     runners=[
         speech2text_translator,
         text2speech_translator,
@@ -58,5 +61,5 @@ def generate_speech(text: str) -> np.ndarray:
 chatter = Chatter(generate_speech, generate_text, WHISPER_PROCESSOR, LOGGER)
 app = FastAPI()
 viewer = ChatbotViewer(chatter)
-app = gr.mount_gradio_app(app, viewer.get_view(), path="/chatbot")
+app = gr.mount_gradio_app(app, viewer.get_view(), path="/llmchatbot")
 svc.mount_asgi_app(app, "/")

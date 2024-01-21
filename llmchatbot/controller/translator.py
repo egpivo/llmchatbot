@@ -5,14 +5,14 @@ import numpy as np
 import torch
 from bentoml._internal.models.model import Model
 
-from chatbot.model.finetune.model_loader import (
+from llmchatbot.model.finetune.model_loader import (
     T5_MODEL,
     T5_PROCESSOR,
     T5_VOCODER,
     WHISPER_MODEL,
     WHISPER_PROCESSOR,
 )
-from chatbot.model.utils import load_speaker_embeddings
+from llmchatbot.model.utils import load_speaker_embeddings
 
 
 class BasicTranslator(bentoml.Runnable):

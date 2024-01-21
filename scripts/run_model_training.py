@@ -6,12 +6,12 @@ from argparse import ArgumentParser
 
 from dotenv import find_dotenv, load_dotenv
 
-from chatbot.exit_code import ExitCode
-from chatbot.model.finetune.executor import (
+from llmchatbot.exit_code import ExitCode
+from llmchatbot.model.finetune.executor import (
     execute_speech2text_training,
     execute_text2speech_training,
 )
-from chatbot.utils import check_and_finetune_models
+from llmchatbot.utils import check_and_finetune_models
 
 dotenv_file = find_dotenv("envs/.env")
 load_dotenv(dotenv_file)
