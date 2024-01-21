@@ -4,8 +4,8 @@ version = "1.0.3"
 description = "LLM-based Chatbot"
 authors = ["Joseph Wang <egpivo@gmail.com>"]
 readme = "README.md"
-homepage = "https://github.com/egpivo/chatbot"
-repository = "https://github.com/egpivo/chatbot"
+homepage = "https://github.com/egpivo/llmchatbot"
+repository = "https://github.com/egpivo/llmchatbot"
 
 include = [
     "LICENSE"
