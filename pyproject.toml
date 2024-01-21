@@ -1,9 +1,15 @@
 [tool.poetry]
-name = "chatbot"
+name = "llmchatbot"
 version = "1.0.2"
-description = ""
+description = "LLM-based Chatbot"
 authors = ["Joseph Wang <egpivo@gmail.com>"]
 readme = "README.md"
+homepage = "https://github.com/egpivo/chatbot"
+repository = "https://github.com/egpivo/chatbot"
+
+include = [
+    "LICENSE",
+]
 
 [tool.poetry.dependencies]
 python = "^3.10.12"
