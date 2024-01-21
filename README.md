@@ -1,10 +1,11 @@
 # LLM-Chatbot
-<p /center>
+# LLM-Chatbot
+<p align="center">
   <a href="https://github.com/egpivo/chatbot/actions"><img src="https://github.com/egpivo/chatbot/workflows/CI/badge.svg"/></a>
   <a href="https://codecov.io/gh/egpivo/chatbot"><img src="https://codecov.io/gh/egpivo/chatbot/branch/main/graph/badge.svg"/></a>
   <a href="https://hub.docker.com/r/egpivo/chatbot/tags"><img src="https://img.shields.io/docker/pulls/egpivo/chatbot"/></a>
   <a href="https://hub.docker.com/r/egpivo/chatbot/tags"><img src="https://img.shields.io/docker/image-size/egpivo/chatbot"/></a>
-  <a href="https://pypi.org/project/llmchatbot/"><img src="https://img.shields.io/egpivo/v/llmchatbot.svg?logo=pypi&label=PyPI&logoColor=silver"/></a>
+  <a href="https://pypi.org/project/llmchatbot/"><img src="https://img.shields.io/pypi/v/llmchatbot.svg?logo=pypi&label=PyPI&logoColor=silver"/></a>
 </p>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-...." crossorigin="anonymous" />

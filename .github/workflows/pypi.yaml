@@ -2,8 +2,8 @@ name: Build and publish python package
 
 on:
   push:
-    branches:
-      - "ops/deploy-to-pypi"
+    tags:
+      - "v*"
 
 jobs:
   publish:
@@ -29,4 +29,3 @@ jobs:
         run: |
           poetry config pypi-token.pypi ${PYPI_TOKEN}
           poetry publish --build
-    

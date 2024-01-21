@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "llmchatbot"
-version = "1.0.3.1"
+version = "1.0.3"
 description = "LLM-based Chatbot"
 authors = ["Joseph Wang <egpivo@gmail.com>"]
 readme = "README.md"
