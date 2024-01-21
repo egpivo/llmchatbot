@@ -40,7 +40,7 @@ jobs:
         with:
           images: |
             egpivo/chatbot
-            ghcr.io/chatbot
+            ghcr.io/${{ github.repository }}
           tags: |
             type=raw,value=latest
             type=semver,pattern={{version}},prefix=v
