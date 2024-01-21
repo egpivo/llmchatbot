@@ -37,6 +37,6 @@ RUN ./.venv/bin/pip install *.whl
 # Add metadata labels
 LABEL maintainer="Joseph Wang <egpivo@gmail.com>" \
       description="Docker image for Chatbot application" \
-      version="1.0.3"
+      version="1.0.4"
 
 ENTRYPOINT ["/bin/bash", "-c", "source .venv/bin/activate && scripts/run_app_service.sh --is_production"]
