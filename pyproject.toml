@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "llmchatbot"
+name = "chatbot"
 version = "1.0.2"
 description = "LLM-based Chatbot"
 authors = ["Joseph Wang <egpivo@gmail.com>"]
