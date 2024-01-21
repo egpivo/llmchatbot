@@ -11,10 +11,15 @@
 
 ## Installation
 
-To get the Chatbot Python package from this GitHub repository, use the following command:
+To get the Chatbot Python package by the following commands:
+1. PyPy
+```shell
+pip install llmchatbot
+```
 
+2. GitHub repository
 ```bash
-pip install git+https://github.com/egpivo/chatbot.git
+pip install git+https://github.com/egpivo/llmchatbot.git
 ```
 ## Serving Automation
 This repository automates the process of checking and fine-tuning pre-trained models for the Chatbot application. The automation script allows you to customize SpeechT5 and SWhisper models and enables retraining if needed.
@@ -71,11 +76,11 @@ make docker-serve
 #### By `docker` CLI
 - DockerHub
   ```shell
-  docker run -p 443:443 egpivo/llmchatbot:latest
+  docker run -p 443:443 egpivo/chatbot:latest
   ```
 - GitHub Package
   ```shell
-  docker run -p 443:443 ghcr.io/egpivo/llmchatbot:latest
+  docker run -p 443:443 ghcr.io/egpivo/chatbot:latest
   ```
 ### Client Side
 Access the demo chatbot at `https://{ip}/chatbot`, with the default values being `0.0.0.0` for the `ip`.
