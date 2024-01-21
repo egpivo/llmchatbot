@@ -28,7 +28,7 @@ FROM base as final
 #COPY . ./
 COPY --from=builder /llmchatbot/.venv ./.venv
 COPY --from=builder /llmchatbot/dist/ .
-COPY llmchatbot/app.py ./chatbot/app.py
+COPY llmchatbot/app.py ./llmchatbot/app.py
 COPY scripts ./scripts
 COPY envs ./envs
 
