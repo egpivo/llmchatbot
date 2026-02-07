@@ -5,7 +5,7 @@
   <a href="https://hub.docker.com/r/egpivo/chatbot/tags"><img src="https://img.shields.io/docker/pulls/egpivo/chatbot"/></a>
   <a href="https://hub.docker.com/r/egpivo/chatbot/tags"><img src="https://img.shields.io/docker/image-size/egpivo/chatbot"/></a>
   <a href="https://pypi.org/project/llmchatbot/"><img src="https://img.shields.io/pypi/v/llmchatbot.svg?logo=pypi&label=PyPI&logoColor=silver"/></a>
-  <a href="https://pypi.org/project/llmchatbot/"><img src="https://img.shields.io/pypi/dm/llmchatbot"/></a>
+  <a href="https://pypi.org/project/llmchatbot/"><img src="https://img.shields.io/pepy/dt/llmchatbot"/></a>
 </p>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-...." crossorigin="anonymous" />
