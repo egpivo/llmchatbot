@@ -1,6 +1,6 @@
 # LLM-Chatbot
 <p align="center">
-  <a href="https://github.com/egpivo/llmchatbot/actions"><img src="https://github.com/egpivo/llmchatbot/workflows/CI/badge.svg"/></a>
+  <a href="https://github.com/egpivo/llmchatbot/actions"><img src="https://github.com/egpivo/llmchatbot/workflows/Test/badge.svg"/></a>
   <a href="https://codecov.io/gh/egpivo/llmchatbot"> <img src="https://codecov.io/gh/egpivo/llmchatbot/graph/badge.svg?token=gtKjUUupSz"/> </a>
   <a href="https://hub.docker.com/r/egpivo/chatbot/tags"><img src="https://img.shields.io/docker/pulls/egpivo/chatbot"/></a>
   <a href="https://hub.docker.com/r/egpivo/chatbot/tags"><img src="https://img.shields.io/docker/image-size/egpivo/chatbot"/></a>
